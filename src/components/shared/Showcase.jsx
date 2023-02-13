@@ -4,15 +4,19 @@ import React from 'react'
 const Showcase = () => {
 
   return (
-    <div className='bg-white p-2 flex space-evenly'>
-        <div>
+    <div className='bg-white p-2 flex justify-between'>
+        <div className='ml-7'>
             <h1 className='text-2xl text-gray-400 font-normal'>Exams</h1>
-            <p>Home / <sapn className='font-bold'>Exams</sapn></p>
+            <p>Home / <span className='font-bold'>Exams</span></p>
         </div>
-        <div className='flex justify-evenly items-center mr-10'>
-            <input type="date" className='border '/>
-            <input className='border h-8' type="text" />
-            <button className='bg-emerald-400 text-white p-1 rounded-sm'>Select</button>
+        <div className='flex justify-between items-center mr-32'>
+            <input type="date" className='border mr-2 h-6'/>
+            <input className='border h-6 mr-2' type="text" />
+            <select className='w-14 border mr-2' id="">
+              <option value="Selected">Select 1</option>
+              <option value="Selected2">Select 2</option>
+            </select>
+            <button className='bg-emerald-400 text-white p-1 rounded-sm text-xs font-semibold'>Select</button>
         </div>
     </div>
   )

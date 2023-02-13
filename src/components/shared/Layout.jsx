@@ -1,9 +1,8 @@
 import React from 'react'
 import {Outlet} from 'react-router-dom' 
-import Card from '../Card'
 import Header from './Header'
-import Showcase from './Showcase'
 import Sidebar from './Sidebar'
+
 
 const Layout = () => {
   return (
@@ -11,12 +10,9 @@ const Layout = () => {
         <Sidebar />
         <div className='flex-1'>
              <Header />
-             <Showcase />
-             <Card />
-          <div className='p-4'>
-            {<Outlet/>}
-         </div>
+        <div className='p-4'>{<Outlet/>}</div>
         </div>   
+       
     </div>
   )
 }

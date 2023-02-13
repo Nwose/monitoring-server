@@ -9,13 +9,13 @@ export const DASHBOARD_SIDEBAR_LINKS = [
 	{
 		key: 'exam',
 		label: 'Exam',
-		path: '/',
+		path: 'exam',
 		icon: <HiDatabase />
 	},
 	{
 		key: 'activation time',
 		label: 'Activation Time',
-		path: '/activation',
+		path: 'activation',
 		icon: <WiTime9 />
 	},
 	{

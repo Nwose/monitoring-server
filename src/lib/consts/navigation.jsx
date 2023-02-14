@@ -21,55 +21,55 @@ export const DASHBOARD_SIDEBAR_LINKS = [
 	{
 		key: 'start time',
 		label: 'Start Time',
-		path: '/orders',
+		path: 'settime',
 		icon: <WiTime9 />
 	},
 	{
 		key: 'attendance',
 		label: 'Attendance',
-		path: '/attendance',
+		path: 'attendance',
 		icon: <BiMobile />
 	},
 	{
 		key: 'center monitoring',
 		label: 'Center Monitoring',
-		path: '/monitoring',
+		path: 'monitoring',
 		icon: <FaBinoculars />
 	},
 	{
 		key: 'center technical issues',
 		label: 'Center Technical Issues',
-		path: '/issues',
+		path: 'issues',
 		icon: <FaBug />
 	},
     {
 		key: 'live centers',
 		label: 'Live Centers',
-		path: '/centers',
+		path: 'centers',
 		icon: <GiNetworkBars />
 	},
     {
 		key: 'malpractice',
 		label: 'Malpractice',
-		path: '/malpractice',
+		path: 'malpractice',
 		icon: <FaKeyboard />
 	},
     {
 		key: 'fastfinger',
 		label: 'Fastfinger',
-		path: '/fastfinger',
+		path: 'fastfinger',
 		icon: <FaHandRock />
 	},
      {
 		key: 'identity management',
 		label: 'Identity Management',
-		path: '/identity management',
+		path: 'identity management',
 		icon: <MdPermContactCalendar />
 	},
      {
 		key: 'center upload',
 		label: 'Center Upoad',
-		path: '/center upload',
+		path: 'center upload',
 		icon: <FaUpload />
 	}
 ]

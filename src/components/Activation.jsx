@@ -1,8 +1,12 @@
 import React from 'react'
+import Showcase from './shared/Showcase'
 
 const Activation = () => {
   return (
-    <div className='bg-white border h-[26rem] w-full'>
+   <>
+      <Showcase title={'Activation Time'}
+       route={'Activation Time'} />
+      <div className='bg-white border h-[26rem] w-full'>
         <p className='border-b-2 p-2 text-gray-400 font-semibold'>Activation Time</p>
         <div className='flex items-center justify-center mt-7 gap-8'>
           <div className='flex bg-gray-100 p-2 justify-between w-96 px-8 rounded-lg border-l-8 border-r-8'>
@@ -48,6 +52,8 @@ const Activation = () => {
       <button className='p-2 border bg-emerald-500 text-white rounded-lg mt-20 px-24 ml-80'>Activation Time</button>
        
     </div>
+   </>
+    
   )
 }
 

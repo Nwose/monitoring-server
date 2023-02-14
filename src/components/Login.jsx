@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import loginImg from '../assests/siora-photo.jpg'
+import loginImg from '../assests/siora-photoo.jpg'
 import {AiOutlineEyeInvisible} from 'react-icons/ai'
 import {FcGoogle} from 'react-icons/fc'
 
@@ -15,7 +15,7 @@ const Login = () => {
         if(!email || !password){
             alert("Enter Email and Password")
         }else{
-            navigate("/layout")
+            navigate("/layout/exam")
         }
     }
 
@@ -32,7 +32,8 @@ const Login = () => {
                             <input type="password" className='p-2 rounded-xl border w-full' name="password" placeholder='Password' value={password} onChange={(e)=> setPassowrd(e.target.value)} />
                             <AiOutlineEyeInvisible className='absolute top-1/2 right-3 -translate-y-1/2 text-gray-500' />
                         </div>
-                        <button className='bg-emerald-400 p-2 text-white mb-3 rounded-xl' onClick={onLogin}>Login</button>
+                        <button className='bg-emerald-400 p-2 text-white mb-3 rounded-xl hover:bg-teal-600' onClick={onLogin}>Login</button>
+                        
                     </div>
 
                     <div className='mt-10 grid grid-cols-3 items-center text-400-gray'>
@@ -41,7 +42,7 @@ const Login = () => {
                         <hr className='border-gray-400' />
                     </div>
 
-                    <button className='bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm mr-3'><FcGoogle />Login with google</button>
+                    <button className='bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm mr-3'><FcGoogle className='mr-2'/> Login with google</button>
                     
                     {/* <p>Go to Dashboard</p><Link to="/layout" className="underline">Go to products</Link> */}
                 </div>

@@ -4,8 +4,7 @@ import {MdLogout} from 'react-icons/md'
 
 
 
-const Header = () => {
-  const [isNavOpen, setIsNavOpen] = useState(false)
+const Header = ({setCollapseNav}) => {
 
   const navigate = useNavigate();
 
@@ -15,8 +14,8 @@ const Header = () => {
   return (
     <div className='bg-neutral-200 h-16 px-4 flex items-center justify-between'>
          <div
-            className="HAMBURGER-ICON space-y-2 bg-emerald-400 p-2 rounded-md cursor-pointer"
-            onClick={() => setIsNavOpen((prev) => !prev)} // toggle isNavOpen state on click
+            className="HAMBURGER-ICON space-y-2 bg-teal-500 p-2 rounded-md cursor-pointer"
+            onClick={() => setCollapseNav((prev) => !prev)} // toggle isNavOpen state on click
           >
             <span className="block h-0.5 w-6 animate-pulse bg-white font-bold"></span>
             <span className="block h-0.5 w-6 animate-pulse bg-white font-bold"></span>

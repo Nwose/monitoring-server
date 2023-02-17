@@ -2,11 +2,11 @@ import classNames from 'classnames'
 import {Link, useLocation} from 'react-router-dom'
 import { DASHBOARD_SIDEBAR_LINKS } from '../../lib/consts/navigation'
 
-const linkClasses = 'flex items-center gap-2 px-3 py-3 hover:bg-red-400 hover:no-underline active:bg-slate-200 rounded-sm text-base'
+const linkClasses = 'flex items-center gap-2 px-3 py-3 hover:bg-teal-500 hover:no-underline active:bg-slate-200 rounded-sm text-base'
 const Sidebar = ({collapseNav}) => {
   return (
     <div className={`bg-teal-700 ${!collapseNav ? "w-60" : "w-10"} duration-300 flex flex-col`}>
-      <div className={`bg-teal-600 ${!collapseNav ? "p-7" : "p-5 -m-2"} text-white`}>{!collapseNav ? 'MONITORING SERVER' : 'M'}</div>
+      <div className={`bg-teal-600 ${!collapseNav ? "p-7" : "p-5 -m-2 font-bold italic"} text-white`}>{!collapseNav ? 'MONITORING SERVER' : 'M'}</div>
       <div>
           {DASHBOARD_SIDEBAR_LINKS.map((item) => (
               <SidebarLink key={item.key} item={item} collapseNav={collapseNav}  />

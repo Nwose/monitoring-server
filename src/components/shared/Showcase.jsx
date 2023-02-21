@@ -9,10 +9,10 @@ const Showcase = (props) => {
             <h1 className='text-2xl text-gray-400 font-normal'>{title}</h1>
             <p>Home / <span className='font-bold'>{route}</span></p>  
         </div>
-        <div className='flex justify-between items-center mr-32 px-10'>
-            <input type="date" className='border mr-2 h-6'/>
-            <input className='border h-6 mr-2' type="text" />
-            <select className='w-20 border mr-2' id="">
+        <div className='flex justify-between items-center mr-16 px-10'>
+            <input type="date" className='border mr-2 h-6 p-4 rounded-sm outline-none'/>
+            <input className='border h-6 mr-2 p-4 rounded-sm outline-none' type="text" />
+            <select className='w-20 border mr-2 p-1 rounded-sm outline-none' id="">
               <option value="Selected">Select 1</option>
               <option value="Selected2">Select 2</option>
             </select>

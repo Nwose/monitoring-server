@@ -42,7 +42,7 @@ const Login = () => {
                         <hr className='border-gray-400' />
                     </div>
 
-                    <button className='bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm mr-3'><FcGoogle className='mr-2'/> Login with google</button>
+                    <button className='bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm mr-3 mb-4'><FcGoogle className='mr-2'/> Login with google</button>
                     
                     {/* <p>Go to Dashboard</p><Link to="/layout" className="underline">Go to products</Link> */}
                 </div>

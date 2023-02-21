@@ -63,13 +63,13 @@ export const DASHBOARD_SIDEBAR_LINKS = [
      {
 		key: 'identity management',
 		label: 'Identity Management',
-		path: 'identity management',
+		path: 'identitymanagement',
 		icon: <MdPermContactCalendar />
 	},
      {
 		key: 'center upload',
 		label: 'Center Upoad',
-		path: 'center upload',
+		path: 'centerupload',
 		icon: <FaUpload />
 	}
 ]

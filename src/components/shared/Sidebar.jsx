@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import {Link, useLocation} from 'react-router-dom'
 import { DASHBOARD_SIDEBAR_LINKS } from '../../lib/consts/navigation'
 
-const linkClasses = 'flex items-center gap-2 px-3 py-3 hover:bg-teal-500 hover:no-underline active:bg-slate-200 rounded-sm text-base'
+const linkClasses = 'flex items-center gap-2 px-3 py-3 hover:bg-teal-500 hover:translate-x-4 hover:no-underline active:bg-slate-200 rounded-sm text-base'
 const Sidebar = ({collapseNav}) => {
   return (
     <div className={`bg-teal-700 ${!collapseNav ? "w-60" : "w-10"} duration-300 flex flex-col`}>
@@ -24,7 +24,7 @@ const SidebarLink = ({item, collapseNav}) => {
   const pathArr = pathname.split("/")
   console.log(item.path, pathArr[pathArr.length-1] );
   return (
-    <Link to={item.path} className={classNames(pathArr[pathArr.length-1] === item.path ? 'bg-teal-500 text-white' : 'text-white', linkClasses)}>
+    <Link to={item.path} className={classNames(pathArr[pathArr.length-1] === item.path ? 'bg-teal-500 text-white active:border-r-white' : 'text-white', linkClasses)}>
         <span className={`text-white font-semi-bold`}>{item.icon}</span>
         <p className={`text-white font-semi-bold ${!collapseNav ? 'block' : 'hidden'} origin-left duration-200`}> {item.label}</p>
     </Link>

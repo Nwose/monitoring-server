@@ -1,6 +1,36 @@
 import React from 'react'
+import { useState,useEffect } from 'react';
+import axios from 'axios'
+
+
+
 
 const Card = () => {
+  const [downloaded,setDownloaded] = useState(0);
+  const [uploaded,setUploaded] = useState(0);
+  useEffect(() => {
+    axios.get('http://165.227.142.137:5010/api/v1/sessions/1/02-22-2023/download-upload')
+  .then(function (response) {
+    // handle success
+    console.log(response);
+    console.log(response.data.data.downloaded)
+    console.log(response.data.data.notdownloaded)
+     setDownloaded(response.data.data.downloaded)
+     setUploaded(response.data.data.uploaded)
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .finally(function () {
+    // always executed
+  });
+    return () => {
+      
+    };
+  }, []);
+  
+
   return (
     <div className='flex justify-evenly flex-row pt-7'>
        <div className='border bg-white h-[300px] w-[320px]'>
@@ -12,7 +42,7 @@ const Card = () => {
                 <p className='text-sm -ml-7'>Pending Download</p>
             </div>
             <div className='flex justify-evenly mt-36 text-white'>
-                  <button className='bg-teal-500 rounded-md p-2'>Downloaded 0</button>
+                  <button className='bg-teal-500 rounded-md p-2'>Downloaded {downloaded}</button>
                   <button className='bg-red-400 rounded-md p-2'>Pending Download 0</button>
             </div>
        </div>
@@ -25,7 +55,7 @@ const Card = () => {
                 <p className='text-sm mr-8'>Pending Uploaded</p>
             </div>
              <div className='flex justify-evenly mt-36 text-white'>
-                    <button className='bg-teal-500 rounded-md p-2'>Uploaded 0</button>
+                    <button className='bg-teal-500 rounded-md p-2'>Uploaded {uploaded}</button>
                     <button className='bg-red-400 rounded-md p-2'>Pending Uploaded 0</button>
             </div>
        </div>

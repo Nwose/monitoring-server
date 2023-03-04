@@ -19,8 +19,8 @@ const Malpractice = () => {
   malpracticeRef.current = column;
 
   useEffect(() => {
-     setLoading(true);
-    retrieveMalpractice();
+    //  setLoading(true);
+     retrieveMalpractice();
   }, []);
 
   // const onChangeSearchTitle = (e) => {
@@ -38,9 +38,9 @@ const Malpractice = () => {
       });
   };
 
-  const refreshList = () => {
-    retrieveMalpractice();
-  };
+  // const refreshList = () => {
+  //   retrieveMalpractice();
+  // };
 
    const columns = useMemo(
     () => [

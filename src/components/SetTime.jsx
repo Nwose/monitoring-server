@@ -6,8 +6,13 @@ import axios from 'axios'
 
 const SetTime = () => {
   const [startTimes, setStartTimes] = useState([]);
-
+  const [session, setSession] = useState();
+  const [date, setDate] = useState('');
+  
    const getCenterStartTimes = async (session, date) =>  {
+    setSession(session);
+    setDate(date);
+
     const oldDate = date.split('-');
     const newDate = `${oldDate[1]}-${oldDate[2]}-${oldDate[0]}`;
     try {
@@ -31,7 +36,7 @@ const SetTime = () => {
   <>
     <Showcase submitRequest={getCenterStartTimes} title='Exam Start Time' route={'Exams/Exam Start Time'} />
      <div className='bg-white border h-[26rem] w-full'>
-        <p className='border-b-2 p-2 text-gray-400 font-semibold mb-4'>List of centers and Start Time || <span className='text-emerald-300'>2022-05-06/ Session 1</span></p>
+        <p className='border-b-2 p-2 text-gray-400 font-semibold mb-4'>List of centers and Start Time || <span className='text-emerald-300'>{`${date}/ Session ${session}`}</span></p>
         <div>
           
         </div>
@@ -58,7 +63,7 @@ const SetTime = () => {
                     <td className='border border-gray-300 border-collapse pl-2'>{session.sessioncenter?.address}</td>
                     <td className='border border-gray-300 border-collapse pl-2'>{session.sessionRef}</td> 
                     <td className='border border-gray-300 border-collapse'>{session.sessioncenter.state}</td>
-                    <td className='border border-gray-300 border-collapse pl-2'>{session.startAt}</td>
+                    <td className='border border-gray-300 border-collapse pl-2'>{new Date(session.startAt).toLocaleTimeString()}</td>
                 </tr>
                })}
               </tbody>

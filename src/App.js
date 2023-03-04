@@ -25,7 +25,7 @@ function App() {
                 <Route path="activation" element={<Activation />} />
                 <Route path="settime" element={<SetTime />} />
                 <Route path="attendance" element={<Attendance />} />
-                <Route path="monitoring" element={<Monitoring />} />
+                <Route path="monitoring" element={<Monitoring />} /> 
                 <Route path="issues" element={<Issues />} />
                 <Route path="centers" element={<Livecenter />} />
                 <Route path="malpractice" element={<Malpractice />} />

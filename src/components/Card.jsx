@@ -8,8 +8,9 @@ import axios from 'axios'
 const Card = () => {
   const [downloaded,setDownloaded] = useState(0);
   const [uploaded,setUploaded] = useState(0);
+  const [notUploaded,setNotUploaded] = useState(0);
   useEffect(() => {
-    axios.get('http://165.227.142.137:5010/api/v1/sessions/1/02-22-2023/download-upload')
+    axios.get('http://165.227.142.137:5010/api/v1/sessions/1/02-26-2023/download-upload')
   .then(function (response) {
     // handle success
     console.log(response);
@@ -17,6 +18,7 @@ const Card = () => {
     console.log(response.data.data.notdownloaded)
      setDownloaded(response.data.data.downloaded)
      setUploaded(response.data.data.uploaded)
+     setNotUploaded(response.data.data.notUploaded)
   })
   .catch(function (error) {
     // handle error
@@ -33,7 +35,7 @@ const Card = () => {
 
   return (
     <div className='flex justify-evenly flex-row pt-7'>
-       <div className='border bg-white h-[300px] w-[320px]'>
+       <div className='border bg-white h-[300px] w-[320px] shadow-md'>
             <p className='border-b-2 p-3 text-gray-400 font-semibold'>Downloads</p>
             <div className='flex justify-between items-center p-2'>
                 <div className='bg-teal-500 w-6 h-2 ml-6'></div>
@@ -46,7 +48,7 @@ const Card = () => {
                   <button className='bg-red-400 rounded-md p-2'>Pending Download 0</button>
             </div>
        </div>
-       <div className='border bg-white h-[300px] w-[320px]'>
+       <div className='border bg-white h-[300px] w-[320px] shadow-md'>
             <p className='border-b-2 p-3 text-gray-400 font-semibold'>Uploads</p>
             <div className='flex justify-between items-center p-2'>
                 <div className='bg-teal-500 w-6 h-2 ml-9'></div>
@@ -56,10 +58,10 @@ const Card = () => {
             </div>
              <div className='flex justify-evenly mt-36 text-white'>
                     <button className='bg-teal-500 rounded-md p-2'>Uploaded {uploaded}</button>
-                    <button className='bg-red-400 rounded-md p-2'>Pending Uploaded 0</button>
+                    <button className='bg-red-400 rounded-md p-2'>Pending Uploaded {notUploaded}</button>
             </div>
        </div>
-       <div className='border bg-white h-[300px] w-[320px]'>
+       <div className='border bg-white h-[300px] w-[320px] shadow-md'>
             <p className='border-b-2 p-3 text-gray-400 font-semibold'>Exams Duration</p>
             <div className='flex justify-between items-center p-2 flex-wrap'>
                 <div className='bg-teal-500 w-6 h-2 ml-4'></div>

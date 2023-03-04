@@ -24,7 +24,7 @@ const SidebarLink = ({item, collapseNav}) => {
   const pathArr = pathname.split("/")
   console.log(item.path, pathArr[pathArr.length-1] );
   return (
-    <Link to={item.path} className={classNames(pathArr[pathArr.length-1] === item.path ? 'bg-teal-500 text-white active:border-r-white' : 'text-white', linkClasses)}>
+    <Link to={item.path} className={classNames(pathArr[pathArr.length-1] === item.path ? 'bg-teal-500 border-x-4 border-white text-white' : 'text-white', linkClasses)}>
         <span className={`text-white font-semi-bold`}>{item.icon}</span>
         <p className={`text-white font-semi-bold ${!collapseNav ? 'block' : 'hidden'} origin-left duration-200`}> {item.label}</p>
     </Link>

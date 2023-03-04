@@ -12,53 +12,36 @@ const Login = () => {
      const [password, setPassowrd] = useState("");
      const navigate = useNavigate();
      const onLogin = async (e) => {
-                e.preventDefault()
-                axios.post('http://165.227.142.137:5010/api/v1/auth/login', {
-                email: email,
+        //  navigate("/layout/exam")
+               e.preventDefault()
+               axios.post('http://165.227.142.137:5010/api/v1/auth/login', {
+               email: email,
                 password: password
-        })
-        .then(function (response) {
-            console.log(response);
-            if(response.data.success){
-                navigate("/layout/exam")
-            }
-        })
-        .catch(function (error) {
-            console.log(error);
-            console.log(error.response.data.errors)
-            for(let i = 0; i <= error.response.data.errors.length; i++ ) {
-                toast.error(error.response.data.errors[i].message, {
-                    position: "top-center",
-                    autoClose: 1000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    });
-            }
-        });
-        // 
-        // const res = await axios.post('http://165.227.142.137:5010/api/v1/auth/login', {
-        //     "email": email,
-        //     "password": password
-        // })
-        // console.log(res)
-        // if(res.data.success) {
-        //     // navigate("/layout/exam")
-        //     alert("Login Sucessful")
-        //     console.log(res);
-        // } if (res.data.error){
-        //    alert("beam");
-        // } if (res.data.null) {
-        //     alert("")
-        // }
+         })
+         .then(function (response) {
+             console.log(response);
+             if(response.data.success){
+                 navigate("/layout/exam")
+             }
+         })
+         .catch(function (error) {
+             console.log(error);
+             console.log(error.response.data.errors)
+             for(let i = 0; i <= error.response.data.errors.length; i++ ) {
+                 toast.error(error.response.data.errors[i].message, {
+                     position: "top-center",
+                     autoClose: 1000,
+                     hideProgressBar: false,
+                     closeOnClick: true,
+                     pauseOnHover: true,
+                     draggable: true,
+                     progress: undefined,
+                     theme: "light",
+                     });
+             }
+         });
+       
     }
-
-       
-
-       
 
     return (
         <div className='bg-gray-50 min-h-screen flex items-center justify-center'>

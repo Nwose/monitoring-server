@@ -1,8 +1,61 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 import {AiOutlineFile} from 'react-icons/ai'
 import Showcase from './shared/Showcase'
+import axios from 'axios'
 
 const SetTime = () => {
+   const [colum ,setColumn] = useState([]);
+   const [records, setRecords] = useState({});
+   const [startTimes, setStartTimes] = useState([]);
+
+   const getCenterStartTimes = async () =>  {
+      try {
+        const {data} = await axios.get('http://165.227.142.137:5010/api/v1/sessions/1/02-28-2023')
+        console.log('API', data);
+         setStartTimes([...startTimes, ...data.data])
+;      } catch (err) {
+        console.log(err.response.data);
+      }
+
+   }
+
+   const renderCenters = () => {
+    startTimes.length > 0 &&
+    startTimes.map((index, session) => (
+       <tr key={session.id}>
+          <td className='border border-gray-300 border-collapse pl-2'>{index+1}</td>
+          <td className='border border-gray-300 border-collapse pl-2'>{session.sessioncenter?.address}</td>
+          <td className='border border-gray-300 border-collapse pl-2'>{session.sessionRef}</td> 
+          <td className='border border-gray-300 border-collapse'>{session.sessioncenter.state}</td>
+          <td className='border border-gray-300 border-collapse pl-2'>{session.startAt}</td>
+        </tr>
+    ))
+   }
+
+  useEffect(() => {
+    getCenterStartTimes()
+    axios.get('http://165.227.142.137:5010/api/v1/sessions/1/02-26-2023')
+  .then(function (response) {
+    // handle success
+    console.log(response.data.data);
+    let object = response.data.data[0];
+    console.log(object);
+    setRecords(object)
+
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .finally(function () {
+    // always executed
+  });
+    return () => {
+      
+    };
+  }, []);
+
   return (
   <>
     <Showcase title={'Exam Start Time'}
@@ -17,7 +70,8 @@ const SetTime = () => {
               <AiOutlineFile/><p>Download List</p>
           </div>  
         </div>
-        <table className='w-full border border-gray-400 border-collapse'>
+    
+         <table className='w-full border border-gray-400 border-collapse'>
               <thead className='bg-gray-200 text-gray-400'>
                 <tr>
                   <th className='p-3 text-sm font-semibold tracking-wide text-center border border-gray-300 border-collapse'>S/N</th>
@@ -28,55 +82,9 @@ const SetTime = () => {
                 </tr>
               </thead>
               <tbody className='text-gray-600'>
-                  <td className='border border-gray-300 border-collapse pl-2'>1</td>
-                  <td className='border border-gray-300 border-collapse pl-2'></td>
-                  <td className='border border-gray-300 border-collapse pl-2'>00501</td> 
-                  <td className='border border-gray-300 border-collapse'></td>
-                  <td className='border border-gray-300 border-collapse pl-2'>8:12</td>
+               {startTimes.length > 0 && renderCenters()}
               </tbody>
-              <tbody className='text-gray-600 bg-gray-100'>
-                  <td className='border border-gray-300 border-collapse pl-2'>2</td>
-                  <td className='border border-gray-300 border-collapse pl-2'></td>
-                  <td className='border border-gray-300 border-collapse pl-2'>00502</td>
-                  <td className='border border-gray-300 border-collapse'></td>
-                  <td className='border border-gray-300 border-collapse pl-2'>8:00</td>
-              </tbody>
-                  <tbody className='text-gray-600'>
-                  <td className='border border-gray-300 border-collapse pl-2'>3</td>
-                  <td className='border border-gray-300 border-collapse pl-2'></td>
-                  <td className='border border-gray-300 border-collapse pl-2'>00503</td>
-                  <td className='border border-gray-300 border-collapse'></td>
-                  <td className='border border-gray-300 border-collapse pl-2'>8:31</td>
-              </tbody>
-              <tbody className='text-gray-600 bg-gray-100'>
-                  <td className='border border-gray-300 border-collapse pl-2'>4</td>
-                  <td className='border border-gray-300 border-collapse pl-2'></td>
-                  <td className='border border-gray-300 border-collapse pl-2'>00504</td>
-                  <td className='border border-gray-300 border-collapse'></td>
-                  <td className='border border-gray-300 border-collapse pl-2'>8:34</td>
-              </tbody>
-               <tbody className='text-gray-600'>
-                  <td className='border border-gray-300 border-collapse pl-2'>5</td>
-                  <td className='border border-gray-300 border-collapse pl-2'></td>
-                  <td className='border border-gray-300 border-collapse pl-2'>00505</td>
-                  <td className='border border-gray-300 border-collapse'></td>
-                  <td className='border border-gray-300 border-collapse pl-2'>8:15</td>
-              </tbody>
-               <tbody className='text-gray-600 bg-gray-100'>
-                  <td className='border border-gray-300 border-collapse pl-2'>6</td>
-                  <td className='border border-gray-300 border-collapse pl-2'></td>
-                  <td className='border border-gray-300 border-collapse pl-2'>00506</td>
-                  <td className='border border-gray-300 border-collapse'></td>
-                  <td className='border border-gray-300 border-collapse pl-2'>8:27</td>
-              </tbody>
-               <tbody className='text-gray-600'>
-                  <td className='border border-gray-300 border-collapse pl-2'>7</td>
-                  <td className='border border-gray-300 border-collapse pl-2'></td>
-                  <td className='border border-gray-300 border-collapse pl-2'>00507</td>
-                  <td className='border border-gray-300 border-collapse'></td>
-                  <td className='border border-gray-300 border-collapse pl-2'>8:44</td>
-              </tbody>
-            </table>   
+            </table>    
     </div>
   </>
    

@@ -65,13 +65,6 @@ const Attendance = () => {
                   <td className='border border-gray-300 border-collapse'></td>
                   <td className='border border-gray-300 border-collapse pl-2'>8:27</td>
               </tbody>
-               <tbody className='text-gray-600'>
-                  <td className='border border-gray-300 border-collapse pl-2'>7</td>
-                  <td className='border border-gray-300 border-collapse pl-2'></td>
-                  <td className='border border-gray-300 border-collapse pl-2'>00507</td>
-                  <td className='border border-gray-300 border-collapse'></td>
-                  <td className='border border-gray-300 border-collapse pl-2'>8:44</td>
-              </tbody>
             </table>   
     </div>
     </>

@@ -7,8 +7,8 @@ import Sidebar from './Sidebar'
 const Layout = () => {
   const [collapseNav, setCollapseNav] = useState(false);
   return (
-    <div className='flex flex-row bg-neutral-100 h-screen w-screen overflow-hidden'>
-        <Sidebar collapseNav={collapseNav}/>
+    <div className='flex flex-row bg-neutral-100 max-h-fit w-screen'>
+        <Sidebar className='h-screen sticky top-8' collapseNav={collapseNav}/>
         <div className='flex-1'>
           <Header setCollapseNav={setCollapseNav} />
           

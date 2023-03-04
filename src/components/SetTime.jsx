@@ -5,52 +5,23 @@ import Showcase from './shared/Showcase'
 import axios from 'axios'
 
 const SetTime = () => {
-   const [colum ,setColumn] = useState([]);
-   const [records, setRecords] = useState({});
-   const [startTimes, setStartTimes] = useState([]);
+  const [startTimes, setStartTimes] = useState([]);
 
-   const getCenterStartTimes = async () =>  {
-      try {
-        const {data} = await axios.get('http://165.227.142.137:5010/api/v1/sessions/1/02-28-2023')
-        console.log('API', data);
-         setStartTimes([...startTimes, ...data.data])
-;      } catch (err) {
-        console.log(err.response.data);
-      }
+   const getCenterStartTimes = async (session, date) =>  {
+    const oldDate = date.split('-');
+    const newDate = `${oldDate[1]}-${oldDate[2]}-${oldDate[0]}`;
+    try {
+      setStartTimes([])
+      const {data} = await axios.get(`http://165.227.142.137:5010/api/v1/sessions/${session}/${newDate}`)
+       setStartTimes(data.data);
+      } catch (err) {
+      console.log(err.response.data);
+    }
 
-   }
-
-   const renderCenters = () => {
-    startTimes.length > 0 &&
-    startTimes.map((index, session) => (
-       <tr key={session.id}>
-          <td className='border border-gray-300 border-collapse pl-2'>{index+1}</td>
-          <td className='border border-gray-300 border-collapse pl-2'>{session.sessioncenter?.address}</td>
-          <td className='border border-gray-300 border-collapse pl-2'>{session.sessionRef}</td> 
-          <td className='border border-gray-300 border-collapse'>{session.sessioncenter.state}</td>
-          <td className='border border-gray-300 border-collapse pl-2'>{session.startAt}</td>
-        </tr>
-    ))
-   }
+ }
 
   useEffect(() => {
-    getCenterStartTimes()
-    axios.get('http://165.227.142.137:5010/api/v1/sessions/1/02-26-2023')
-  .then(function (response) {
-    // handle success
-    console.log(response.data.data);
-    let object = response.data.data[0];
-    console.log(object);
-    setRecords(object)
-
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .finally(function () {
-    // always executed
-  });
+    // getCenterStartTimes()
     return () => {
       
     };
@@ -58,8 +29,7 @@ const SetTime = () => {
 
   return (
   <>
-    <Showcase title={'Exam Start Time'}
-    route={'Exams/Exam Start Time'} />
+    <Showcase submitRequest={getCenterStartTimes} title='Exam Start Time' route={'Exams/Exam Start Time'} />
      <div className='bg-white border h-[26rem] w-full'>
         <p className='border-b-2 p-2 text-gray-400 font-semibold mb-4'>List of centers and Start Time || <span className='text-emerald-300'>2022-05-06/ Session 1</span></p>
         <div>
@@ -82,7 +52,15 @@ const SetTime = () => {
                 </tr>
               </thead>
               <tbody className='text-gray-600'>
-               {startTimes.length > 0 && renderCenters()}
+               {startTimes.length > 0 && startTimes.map((session, index) => {
+                return <tr key={session.id}>
+                    <td className='border border-gray-300 border-collapse pl-2'>{index+1}</td>
+                    <td className='border border-gray-300 border-collapse pl-2'>{session.sessioncenter?.address}</td>
+                    <td className='border border-gray-300 border-collapse pl-2'>{session.sessionRef}</td> 
+                    <td className='border border-gray-300 border-collapse'>{session.sessioncenter.state}</td>
+                    <td className='border border-gray-300 border-collapse pl-2'>{session.startAt}</td>
+                </tr>
+               })}
               </tbody>
             </table>    
     </div>
